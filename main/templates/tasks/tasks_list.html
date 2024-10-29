@@ -1,22 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .completed {
+            color: green;
+            font-weight: bold;
+        }
+        .pending {
+            color: red;
+            font-weight: bold;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Listas de tarefas</h1>
+    <h1>Listas de Tarefas</h1>
     <ul>
-        {% for task in tasks%}
+        {% for task in tasks %}
             <li>
                 {{ task.title }} -
-                {% if task.completed%} Concluida!
-                {% else %} Pendente!
+                {% if task.completed %}
+                    <span class="completed">Concluída!</span>
+                {% else %}
+                    <span class="pending">Pendente!</span>
                 {% endif %}
             </li>
         {% endfor %}
     </ul>
-    <!-- <a href="{% url 'add_task' %}"> Voltar para adicionar </a> -->
-</body> 
+
+    <hr>
+
+    <h1>Lista de Alunos</h1>
+    <ul>
+        {% for i in registro %}
+            <li>
+                NOME: {{ i.nome }} /----/ NÚMERO: {{ i.telefone }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'cadastro_task' %}">Ir para o Cadastro</a>
+</body>
 </html>

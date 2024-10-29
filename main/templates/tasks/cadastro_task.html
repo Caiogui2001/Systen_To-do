@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Tarefas</title>
+    <title>Atualizar Cadastro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,15 +21,12 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        input[type='text'] {
+        input[type='text'], input[type='number'] {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-        }
-        input[type='checkbox'] {
-            margin: 10px 0;
         }
         button {
             background: #007BFF;
@@ -58,18 +55,13 @@
     </style>
 </head>
 <body>
-    <h1>Adicionar Tarefas</h1>
+    <h1>Atualizar Cadastro</h1>
     <form method="POST">
         {% csrf_token %}
-        <input type='text' name='title' placeholder='Digite o título...' required>
-        
-        <label for="completed">
-            <input type="checkbox" name="completed" id="completed" value="true" checked>
-            Concluída
-        </label>
-        
-        <button type="submit">Adicionar</button>
+        <input type='text' name='nome' placeholder='Insira seu nome completo' required>
+        <input type='number' name='telefone' placeholder='Seu telefone' required>
+        <button type="submit">Cadastrar</button>
     </form>
-    <a href="{% url 'task_list' %}">Voltar para a lista</a>
+    <a href="{% url 'add_task' %}">Avançar</a>
 </body>
 </html>
